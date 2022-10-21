@@ -1,0 +1,73 @@
+
+rpi-update
+
+
+
+
+---> Asignar IP Estatica:
+https://raspberryparanovatos.com/tutoriales/asignar-ip-fija-raspberry-pi/
+sudo nano /etc/dhcpcd.conf
+
+interface eth0
+static ip_address=192.168.1.250/24
+static routers=192.168.1.1
+static domain_name_servers=212.231.6.7 46.6.113.34
+
+
+
+
+---> Instalar Node y npm versiones altas:
+https://forums.raspberrypi.com/viewtopic.php?t=334542#!/bin/bash
+
+# Install nodejs
+if [ "$(uname -m)" != "armv6l" ]; then
+  curl -sL https://deb.nodesource.com/setup_16.x | bash -
+else
+  wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v16.3.0.sh | bash
+fi
+apt-get -y install nodejs
+
+
+---> Instalar YARN:
+
+https://bobbyhadz.com/blog/npm-command-not-found-yarn
+
+PATH en /etc/profile
+
+
+
+---> Deployear la app:
+
+https://gist.github.com/kocisov/2a9567eb51b83dfef48efce02ef3ab06
+
+# assuming you have a GitHub repository for the app
+git pull https://github.com/user/repo.git
+cd repo
+npm install # install app dependencies (or yarn install)
+npm run build # build our app for production (or yarn build)
+
+npm install -g pm2 # install pm2 for running our app detached
+
+# run start/stop
+pm2 start npm --name "next" -- start # start next app
+pm2 stop next # for stopping app
+
+
+
+
+---> hacer andar el audio:
+https://stackoverflow.com/questions/62585077/how-do-i-get-amixer-pcm-numid-3-to-work-on-raspberry-pi-4
+
+I needed three days to find out how to use it on Raspberry Pi. I created an Shell Command. When you want to use Audio via 3.5mm Jack just write. You can let the HDMI Cable connected.
+
+sudo bash -c 'echo -e " defaults.pcm.card 1 \ndefaults.ctl.card 1" > /etc/asound.conf'
+
+if you want to use the HDMI Audio output just change the number 1 to 0.
+
+sudo bash -c 'echo -e " defaults.pcm.card 0 \ndefaults.ctl.card 0" > /etc/asound.conf'
+
+
+
+
+
+
