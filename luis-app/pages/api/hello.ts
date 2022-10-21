@@ -15,12 +15,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 	// 	"vlc -Idummy --play-and-exit --no-video --no-repeat --no-loop --no-random --no-sout-video --no-sout-audio --sout-keep --sout '#transcode{acodec=mp3,ab=128,channels=2,samplerate=44100}:std{access=file,mux=raw,dst=hello.mp3}' C:\\Users\\computadora\\Desktop\\Luis\\luis-app\\public\\lala.mp3",
 	// 	(error, stdout, stderr) => {
 	// 		console.log('error', error);
-	// 	} 
+	// 	}
 	// );
 
 	// child_process.spawn('vlc',['-I dummy','--dummy-quiet'])
 
 	exec(
+		//ok
 		// '"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe" "-I dummy"  "C:\\Users\\computadora\\Desktop\\Luis\\luis-app\\public\\lala.mp3"',
 		// '"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe" "-I dummy" "--play-and-exit" "--no-video" "--no-repeat" "--no-loop" "--no-random" "--no-sout-video" "--no-sout-audio" "--sout-keep" "--gain=800" "--volume-step=256" "C:\\Users\\computadora\\Desktop\\Luis\\luis-app\\public\\lala.mp3"',
 		//'"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe" "-I dummy" "--play-and-exit" "--no-video" "--no-repeat" "--no-loop" "--no-random" "--no-sout-video" "--no-sout-audio" "--sout-keep" "--gain=8" "--volume-step=256" "public/lala.mp3"',
