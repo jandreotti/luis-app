@@ -68,6 +68,10 @@ sudo bash -c 'echo -e " defaults.pcm.card 0 \ndefaults.ctl.card 0" > /etc/asound
 
 
 
+---> Git update
+git pull origin main
+
+
 
 
 
