@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-// const gTTS = require('gtts');
+const gTTS = require('gtts');
 
 //@ts-ignore
-import gTTS from 'gTTS';
+// import gTTS from 'gTTS';
 import os from 'os';
 import path from 'path';
 import { exec } from 'child_process';
