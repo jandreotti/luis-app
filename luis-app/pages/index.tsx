@@ -122,22 +122,41 @@ const IndexPage: NextPage<Props> = ({ message }: Props) => {
 							}}
 						>
 							Arroje su archivito de audio aqui abajito!
-							<NextLink
-								href={`/text`}
-								passHref
-								style={{
-									cursor: 'pointer',
-								}}
-							>
-								<label
+							<div>
+								<NextLink
+									href={`/text`}
+									passHref
 									style={{
-										color: 'red',
 										cursor: 'pointer',
 									}}
 								>
-									{'o Ir a la diversion ====>'}
-								</label>
-							</NextLink>
+									<label
+										style={{
+											color: 'red',
+											cursor: 'pointer',
+										}}
+									>
+										{'Diversion ====> LOCAL '}
+									</label>
+								</NextLink>
+								/
+								<NextLink
+									href={`/text2`}
+									passHref
+									style={{
+										cursor: 'pointer',
+									}}
+								>
+									<label
+										style={{
+											color: 'red',
+											cursor: 'pointer',
+										}}
+									>
+										{' SERVER'}
+									</label>
+								</NextLink>
+							</div>
 						</div>
 					</label>
 					<input
