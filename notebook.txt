@@ -1,0 +1,144 @@
+-> Video problem despues de bootear
+https://forums.centos.org/viewtopic.php?t=65479
+A quick google says that appending "video=SVIDEO-1:d" to the kernel command line should help. You can do this in several ways.
+
+The first is a one-shot and will need to be done each time you boot but would be a good way to test if it works without changing anything permanently. When you see the grub menu with the list of kernels to boot, hit 'e' to edit the default entry, scroll down until you find the linux16 (or linuxefi if on a UEFI install) line and append a space followed by video=SVIDEO-1:d to the end of the line then hit Ctrl-x to boot up using that modification.
+
+Test using that first and see if it helps. If it does then make it permanent by either editing /boot/grub2/grub.cfg directly and adding the same parameter to the end of the linux16/linuxefi line for the latest kernel or by editing /etc/default/grub and add the same thing to the GRUB_CMDLINE_LINUX= string there and rerun grub2-mkconfig pointing it to the /boot/grub2/grub.cfg file to overwrite it. If you edit the grub.cfg file directly then it may also be good to edit /etc/default/grub to guard against a subsequent run of grub2-mkconfig backing t
+
+
+
+-> Instalar nano
+yum install nano
+
+-> Cambiar idioma en la terminal a español  https://fututel.com/es/numero-virtual-did/10690-tutoriales-videotutoriales/2712-cambiar-el-idioma-del-teclado-en-centos-7-linux
+
+yum install kbd
+TEMPORAL:
+loadkeys es
+PERMANENTE:
+localectl set-keymap es
+
+
+
+-> ifconfig lspci
+yum install net-tools
+yum install pciutils
+
+
+-> Configuracion de red: 
+-> nmtui
+
+-> Wireless
+yum -y install epel-release
+and
+yum -y install wireless-tools
+
+
+-> Actualizar:
+yum check-update
+yum update
+
+
+-> Instalar kernel nuevo
+https://www.geeksforgeeks.org/how-to-upgrade-linux-kernel-on-centos-7/
+https://phoenixnap.com/kb/how-to-upgrade-kernel-centos
+
+uname -mrs
+yum update -y
+rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum list available --disablerepo='*' --enablerepo=elrepo-kernel
+sudo yum --enablerepo=elrepo-kernel install kernel-lt
+
+
+-> Blacklist hp block:
+sudo tee /etc/modprobe.d/blacklist-hp.conf <<< "blacklist hp_wmi"
+https://askubuntu.com/questions/845100/cant-turn-on-wifi-hard-blocked-16-04-hp-14
+
+-> scripts de boteo:  /etc/sysconfig/network-scripts/
+
+
+-> instalar node16
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs
+sudo yum install gcc-c++ make
+curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+yum install yarn
+
+-> yum install git
+
+-> Sonido:
+yum install alsa-utils
+
+-> volumen: 
+alsamixer
+
+-> Deshabilitar firewall
+https://www.maquinasvirtuales.eu/parar-arrancar-habilitar-y-deshabilitar-firewalld-en-centos-7/
+systemctl stop firewalld
+systemctl disable firewalld
+
+
+
+
+-> nginx
+https://phoenixnap.com/kb/how-to-install-nginx-on-centos-7
+https://stackoverflow.com/questions/64386737/how-to-deploy-nextjs-with-nginx
+https://gist.github.com/kocisov/2a9567eb51b83dfef48efce02ef3ab06
+
+yum install nginx
+
+
+
+    server {
+        listen       80;
+
+         location / {
+            # Reverse proxy for Next server
+            proxy_pass http://127.0.0.1:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Port $server_port;
+
+            # we need to remove this 404 handling
+            # because of Next's error handling and _next folder
+#        try_files $uri $uri/ =404;
+          }
+          }
+
+
+
+
+-> Solucionar problema de acceso con SELinux:
+https://stackoverflow.com/questions/23948527/13-permission-denied-while-connecting-to-upstreamnginx
+setsebool -P httpd_can_network_connect 1
+
+-> No suspender cando se cierra la tapa
+https://forums.centos.org/viewtopic.php?t=58498
+/etc/systemd/logind.conf  => HandleLidSwitch=ignore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
