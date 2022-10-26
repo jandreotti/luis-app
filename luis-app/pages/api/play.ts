@@ -45,7 +45,7 @@ const parseFile = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 };
 
 const playAudio = async (file: formidable.File) => {
-	console.log(2);
+	// console.log(2);
 	const filepath = file.filepath;
 
 	exec(
@@ -55,7 +55,7 @@ const playAudio = async (file: formidable.File) => {
 		`"mpg123" "${filepath}"`,
 		(error, stdout, stderr) => {
 			console.log('error', error);
-			console.log('Fin');
+			console.log('Reproducido');
 		}
 	);
 };

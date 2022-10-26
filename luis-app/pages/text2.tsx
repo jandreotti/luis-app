@@ -8,7 +8,11 @@ import React, { useEffect, useRef, useState } from 'react';
 //@ts-ignore
 // import gTTS from 'gTTS';
 
-const Text2Page = () => {
+interface Props {
+	ip: string;
+}
+
+const Text2Page: NextPage<Props> = ({ ip }) => {
 	const [text, setText] = useState('A Roberto le Gusta la Batata');
 	const inputRef = useRef<HTMLInputElement>();
 	// const [focus, setFocus] = useState(false);
@@ -40,6 +44,7 @@ const Text2Page = () => {
 		if (!text.trim()) return;
 
 		const res = axios.post('/api/speak', {
+			ip,
 			text,
 		});
 
@@ -71,7 +76,11 @@ const Text2Page = () => {
 				// variant={focus ? 'outlined' : 'standard'}
 				inputRef={inputRef}
 				value={text}
-				onChange={event => event.target.value.charAt(text.length) != '\n' && setText(event.target.value)}
+				onChange={event =>
+					// event.target.value.charAt(text.length) != '\n' &&
+					// event.target.value.charAt(0) != '\n' &&
+					setText(event.target.value.replaceAll('\n', ''))
+				}
 				// onChange={event => console.log(event.target.value.charAt(text.length))}
 
 				//  onKeyDown={({ key }) => key === 'Enter' && onSpeak()}
@@ -120,6 +129,7 @@ const Text2Page = () => {
 						display: { xs: 'none', md: 'block' },
 						margin: '0 0 0 0',
 						padding: '0 0 0 0',
+						borderRadius: '100% 100% 0 0',
 					}}
 					alt='Charlina1'
 					src='/img/charlina.jpeg'
@@ -148,6 +158,21 @@ const Text2Page = () => {
 			</Box>
 		</Box>
 	);
+};
+
+// You should use getServerSideProps when:
+// - Only if you need to pre-render a page whose data must be fetched at request time
+import { GetServerSideProps, NextPage } from 'next';
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+	const forwarded = req.headers['x-forwarded-for']?.toString();
+	const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
+	// const ip = req.headers['x-real-ip'] || req.connection.remoteAddress;
+	return {
+		props: {
+			ip: ip?.substr(7) || 'NoSeSabe',
+		},
+	};
 };
 
 export default Text2Page;
