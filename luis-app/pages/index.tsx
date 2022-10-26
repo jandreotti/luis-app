@@ -50,15 +50,15 @@ const IndexPage: NextPage<Props> = ({ message }: Props) => {
 
 						height={167}
 						width={250}
-						style={{
-							height: 167,
-							width: 250,
-							// height: 233,
-							// width: 350,
-							// maxHeight: { xs: 233, md: 167 },
-							// maxWidth: { xs: 350, md: 250 },
-							// display: { xs: 'none', md: 'block' },
-						}}
+						// style={{
+						// 	height: 167,
+						// 	width: 250,
+						// 	// height: 233,
+						// 	// width: 350,
+						// 	// maxHeight: { xs: 233, md: 167 },
+						// 	// maxWidth: { xs: 350, md: 250 },
+						// 	// display: { xs: 'none', md: 'block' },
+						// }}
 						alt='LuisImg1'
 						src='/img/luis1.png'
 					/>
@@ -78,15 +78,15 @@ const IndexPage: NextPage<Props> = ({ message }: Props) => {
 						// component='img'
 						height={167}
 						width={250}
-						style={{
-							height: 167,
-							width: 250,
-							// height: 233,
-							// width: 350,
-							// maxHeight: { xs: 233, md: 167 },
-							// maxWidth: { xs: 350, md: 250 },
-							// margin: { xs: 'auto', md: '0' },
-						}}
+						// style={{
+						// 	height: 167,
+						// 	width: 250,
+						// 	// height: 233,
+						// 	// width: 350,
+						// 	// maxHeight: { xs: 233, md: 167 },
+						// 	// maxWidth: { xs: 350, md: 250 },
+						// 	// margin: { xs: 'auto', md: '0' },
+						// }}
 						alt='LuisImg2'
 						src='/img/luis2.jpeg'
 					/>
