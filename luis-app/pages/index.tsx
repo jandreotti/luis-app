@@ -27,7 +27,7 @@ const IndexPage: NextPage<Props> = ({ message }: Props) => {
 		const formData = new FormData();
 		formData.append('file', file);
 		const { data } = await axios.post<{ message: string }>('/api/play', formData);
-		console.log({ data });
+		console.log(data.message);
 	};
 
 	return (

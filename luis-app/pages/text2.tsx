@@ -43,10 +43,11 @@ const Text2Page: NextPage<Props> = ({ ip }) => {
 		//! VALIDACIONES
 		if (!text.trim()) return;
 
-		const res = axios.post('/api/speak', {
+		const res = await axios.post('/api/speak', {
 			ip,
 			text,
 		});
+		console.log(res.data.message);
 
 		inputRef?.current?.select();
 	};

@@ -32,7 +32,7 @@ const parseFile = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 				return reject(err);
 			}
 
-			const resultado = await playAudio(files.file as formidable.File);
+			const resultado = await playAudio(files.file as formidable.File, res);
 			// resolve({ fields, files });
 			// const path=files.file.filepath
 
@@ -44,7 +44,7 @@ const parseFile = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 	});
 };
 
-const playAudio = async (file: formidable.File) => {
+const playAudio = async (file: formidable.File, res: NextApiResponse<Data>) => {
 	// console.log(2);
 	const filepath = file.filepath;
 
@@ -58,4 +58,6 @@ const playAudio = async (file: formidable.File) => {
 			console.log('Reproducido');
 		}
 	);
+
+	return res.status(200).json({ message: 'OK' });
 };
