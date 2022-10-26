@@ -1,3 +1,6 @@
+//https://www.geeksforgeeks.org/how-to-convert-text-to-speech-in-node-js/
+//https://npm.runkit.com/gtts
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 const gTTS = require('gtts');
 

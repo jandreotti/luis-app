@@ -97,7 +97,7 @@ const IndexPage: NextPage<Props> = ({ message }: Props) => {
 				<div
 					style={{
 						width: ' 100vw ',
-						height: ' calc( 100vh - 214px )',
+						height: ' calc( 100vh - 264px )',
 						// height: { xs: 'calc( 100vh - 310px )', md: 'calc( 100vh - 214px )' },
 						backgroundColor: 'blue',
 

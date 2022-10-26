@@ -1,3 +1,8 @@
+//https://github.com/MikeyParton/react-speech-kit
+//https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API
+//https://blog.openreplay.com/make-your-app-speak-with-react-speech-kit/
+//https://www.geeksforgeeks.org/create-a-text-to-speech-application-using-reactjs/
+
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import { useSpeechSynthesis } from 'react-speech-kit';
