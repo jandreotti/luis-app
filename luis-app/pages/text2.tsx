@@ -88,7 +88,7 @@ const Text2Page: NextPage<Props> = ({ ip }) => {
 				onKeyUp={({ key }) => key === 'Enter' && onSpeak()}
 				// onKeyUp={({ key }) => key === 'Enter' && setText('')}
 
-				inputProps={{ style: { fontSize: 40, padding: 5, lineHeight: 1 } }} // font size of input text
+				inputProps={{ style: { fontSize: 40, padding: 5, lineHeight: 1, backgroundColor: 'white', color: 'black' } }} // font size of input text
 				// InputLabelProps={{ style: { fontSize: 40 } }} // font size of input label
 
 				rows={2}
