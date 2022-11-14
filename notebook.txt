@@ -124,7 +124,8 @@ https://forums.centos.org/viewtopic.php?t=58498
 /etc/systemd/logind.conf  => HandleLidSwitch=ignore
 
 
-
+-> Instalar dig
+sudo yum install bind-utils
 
 
 
